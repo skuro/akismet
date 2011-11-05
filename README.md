@@ -18,6 +18,7 @@ A few functions are provided:
 
 Sample use:
 
+```clojure
     (binding [*akismet-key* "123123YourApiKey"*]
       (spam? "http://your.blog.here" {:user_ip "127.0.0.1""
                                       :user_agent "foo bar"
@@ -28,8 +29,11 @@ Sample use:
                                       :comment_author_email "skuro@skuro.tk"
                                       :comment_author_url "http://skuro.tk"
                                       :comment_content "Free viagra!"}
+```
 
 ## TODO
+
+- Write some tests
 
 - Fix the `wrap-akismet` middleware to extract meaningful parameters from the request before calling Akismet
 
