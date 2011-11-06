@@ -19,7 +19,8 @@ A few functions are provided:
 Sample use:
 
 ```clojure
-    (binding [*akismet-key* "123123YourApiKey"]
+    (binding [*akismet-key* "123123YourApiKey"
+              *akismet-blog* "http://your.blog.here"]
       (spam? "http://your.blog.here" {:user_ip "127.0.0.1"
                                       :user_agent "foo bar"
                                       :referrer "http://google.com"
