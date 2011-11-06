@@ -1,4 +1,17 @@
 (ns akismet
+  "Clojure library to call Akismet services.
+
+   In order for all calls to work properly, you need to rebind the following vars:
+
+   - `*akismet-key*` the Akismet API key to use. Get one [here](https://akismet.com/signup/)
+   - `*akismet-blog*` the full URL of the blog you registered you API key for
+
+   The main API is composed by:
+
+   - `valid-key?` a predicate that checks Akismet API key validity.
+   - `spam?` checks whether the provided comment is spam.
+   - `spam!` informs Akismet of a spam comment it missed. Helps improving spam detection for your blog.
+   - `ham! informs Akismet of a comment it wrongly detected as spam. Helps improving spam detection for your blog.`"  
   (:require [clj-http.client :as client]))
 
 (def ^:dynamic *akismet-key*)
@@ -54,7 +67,7 @@ api is one of :verify-key, :comment-check, :submit-spam or :submit-ham"
   "Asks Akismet to evaluate whether the provided text is spam.
    Returns true if the comment is found to be spam, false otherwise"
   [params]
-  (Boolean/parseBoolean (spam-internal :comment-check *akismet-blog* params)))
+  (Boolean/parseBoolean (spam-internal :comment-check params)))
 
 (defn spam!
   "Notifies Akismet of a spam comment it missed"
