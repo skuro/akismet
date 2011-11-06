@@ -6,10 +6,6 @@
 
 (defonce base-url ".rest.akismet.com/1.1/")
 
-(defn- comment-check-url
-  []
-  (str "http://" *akismet-key* base-url "comment-check"))
-
 (defn- api-call-body
   [params]
   {:content-type :x-www-form-urlencoded
