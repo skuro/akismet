@@ -31,14 +31,14 @@ api is one of :verify-key, :comment-check, :submit-spam or :submit-ham"
    - params : map of all available parameters to be included as a POST body
               in the API call"
   [api {:keys [user_ip
-                    user_agent
-                    referrer
-                    permalink
-                    comment_type
-                    comment_author
-                    comment_author_email
-                    comment_author_url
-                    comment_content] :as params}]
+               user_agent
+               referrer
+               permalink
+               comment_type
+               comment_author
+               comment_author_email
+               comment_author_url
+               comment_content] :as params}]
   ;; check for mandatory parameters:
   {:pre [(not-any? nil? [user_ip user_agent])]}
   (call-akismet api (merge {:blog *akismet-blog*} params)))
