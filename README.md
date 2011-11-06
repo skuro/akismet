@@ -19,17 +19,19 @@ A few functions are provided:
 Sample use:
 
 ```clojure
-    (binding [*akismet-key* "123123YourApiKey"
-              *akismet-blog* "http://your.blog.here"]
-      (spam? {:user_ip "127.0.0.1"
-              :user_agent "foo bar"
-              :referrer "http://google.com"
-              :permalink "http://your.blog.here/1"
-              :comment_type "comment"
-              :comment_author "skuro"
-              :comment_author_email "skuro@skuro.tk"
-              :comment_author_url "http://skuro.tk"
-              :comment_content "Free viagra!"}
+(use 'akismet)
+
+(binding [*akismet-key* "123123YourApiKey"
+          *akismet-blog* "http://your.blog.here"]
+  (spam? {:user_ip "127.0.0.1"
+          :user_agent "foo bar"
+          :referrer "http://google.com"
+          :permalink "http://your.blog.here/1"
+          :comment_type "comment"
+          :comment_author "skuro"
+          :comment_author_email "skuro@skuro.tk"
+          :comment_author_url "http://skuro.tk"
+          :comment_content "Free viagra!"}
 ```
 
 ## TODO
