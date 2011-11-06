@@ -65,16 +65,28 @@ api is one of :verify-key, :comment-check, :submit-spam or :submit-ham"
 
 (defn spam?
   "Asks Akismet to evaluate whether the provided text is spam.
-   Returns true if the comment is found to be spam, false otherwise"
+   Returns true if the comment is found to be spam, false otherwise.
+   params must contain at least:
+   - :user_id
+   - :user_agent
+   See spam-internal for more options"
   [params]
   (Boolean/parseBoolean (spam-internal :comment-check params)))
 
 (defn spam!
-  "Notifies Akismet of a spam comment it missed"
+  "Notifies Akismet of a spam comment it missed.
+   params must contain at least:
+   - :user_id
+   - :user_agent
+   See spam-internal for more options"
   [params]
   (spam-internal :submit-spam params))
 
 (defn ham!
-  "Notified Akismet of a comment wrongly marked as spam"
+  "Notified Akismet of a comment wrongly marked as spam. 
+   params must contain at least:
+   - :user_id
+   - :user_agent
+   See spam-internal for more options"
   [params]
   (spam-internal :submit-ham params))
